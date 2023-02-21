@@ -5,10 +5,10 @@ import { RecipeSearch } from "../components/RecipeSearch";
 import { RecipeDetails } from "../components/RecipeDetails";
 
 export const RecipesPage = () => {
-  const recipes = data.hits;
-  const recipe = recipes.map((recipe) => {
-    return recipe.recipe;
-  });
+  //   const recipes = data.hits;
+  //   const recipe = recipes.map((recipe) => {
+  //     return recipe.recipe;
+  //   });
 
   const [userChoice, setUserChoice] = useState();
   return (
