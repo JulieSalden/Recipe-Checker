@@ -5,10 +5,12 @@ import { RecipeSearch } from "../components/RecipeSearch";
 import { RecipeDetails } from "../components/RecipeDetails";
 
 export const RecipesPage = () => {
-  //   const recipes = data.hits;
-  //   const recipe = recipes.map((recipe) => {
-  //     return recipe.recipe;
-  //   });
+  const recipes = data.hits;
+  const recipe = recipes.map((recipe) => {
+    return recipe.recipe;
+  });
+  console.log(recipes);
+  console.log(recipe);
 
   const [userChoice, setUserChoice] = useState();
   return (
@@ -21,7 +23,7 @@ export const RecipesPage = () => {
           <RecipeDetails choice={userChoice} onClick={onClick} />
         ) : (
           <>
-            <RecipeSearch onClick={setUserChoice} />
+            <RecipeSearch onClick={setUserChoice} recipe={recipe} />
           </>
         )}
       </Box>

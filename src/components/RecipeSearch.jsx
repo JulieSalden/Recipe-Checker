@@ -1,8 +1,7 @@
 import { Center, Input, Grid } from "@chakra-ui/react";
 import { Recipes } from "./Recipes";
-import { data } from "../utils/data";
 
-export const RecipeSearch = (onClick) => {
+export const RecipeSearch = (onClick, recipe) => {
   return (
     <Center>
       <Input
@@ -11,8 +10,10 @@ export const RecipeSearch = (onClick) => {
         placeholder="Search recipe"
       ></Input>
       <Grid>
-        {data.hits.recipe.map((recipe) => (
-          <Recipes key={recipe.label} onClick={onClick} />
+        {recipe.map((recipe) => (
+          <div key={recipe.name}>
+            <Recipes onClick={onClick} />
+          </div>
         ))}
       </Grid>
     </Center>
