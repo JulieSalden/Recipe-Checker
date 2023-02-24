@@ -9,20 +9,20 @@ export const RecipesPage = () => {
   const recipe = recipes.map((recipe) => {
     return recipe.recipe;
   });
-  console.log(recipes);
-  console.log(recipe);
 
   const [userChoice, setUserChoice] = useState();
+  console.log(userChoice);
   return (
     <Center h="100vh" flexDir="column">
-      <Heading mb={20} size="xl" color="blue.700">
-        Recipe health checker
-      </Heading>
       <Box className="app">
         {userChoice ? (
           <RecipeDetails choice={userChoice} onClick={onClick} />
         ) : (
           <>
+            {" "}
+            <Heading mb={20} size="xl" color="blue.700">
+              Recipe health checker
+            </Heading>
             <RecipeSearch onClick={setUserChoice} recipe={recipe} />
           </>
         )}

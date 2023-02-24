@@ -1,10 +1,14 @@
 import { Center, Text } from "@chakra-ui/react";
 
-export const RecipeDetails = (choice) => {
+export const RecipeDetails = ({ recipe, onClick }) => {
   return (
-    <Center>
+    <Center
+      onClick={() => {
+        onClick;
+      }}
+    >
       <Text fontWeight={"450"} color="blue.600">
-        test
+        {recipe.label}
       </Text>
     </Center>
   );
