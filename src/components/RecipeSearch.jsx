@@ -6,8 +6,8 @@ import { Searchbar } from "./Searchbar";
 
 export const RecipeSearch = ({ onClick, onChange, recipe }) => {
   console.log(recipe);
-  const healthLabels = recipe.healthLabels;
-  console.log(healthLabels);
+  //   const healthLabels = recipe.healthLabels;
+  //   console.log(healthLabels);
 
   //   const VegetarianDish = healthLabels.filter((healthLabel) => {
   //     healthLabel.includes("Vegetarian");
@@ -27,8 +27,8 @@ export const RecipeSearch = ({ onClick, onChange, recipe }) => {
         </Heading>
         <Flex gridTemplateRows="repeat(3, 1fr)" gap={2}>
           <Searchbar onchange={onChange} recipe={recipe} />
-          {/* <ButtonVeg healthLabels={healthLabels} recipe={VegetarianDish} />
-          <ButtonVegan healthLabels={healthLabels} recipe={VeganDish} /> */}
+          {/* <ButtonVeg onClick={onClick} recipe={VegetarianDish} />
+          <ButtonVegan onClick={onClick} recipe={VeganDish} /> */}
         </Flex>
         <Grid templateColumns="repeat(4, 1fr)" gap={6}>
           {recipe.map((recipe) => (
