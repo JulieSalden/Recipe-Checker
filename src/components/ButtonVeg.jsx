@@ -1,8 +1,8 @@
 import { Button } from "@chakra-ui/react";
-export const ButtonVeg = ({ onClick, VegetarianDish }) => {
+export const ButtonVeg = ({ onClick, vegetarianRecipes }) => {
   return (
     <>
-      <Button onClick={() => onClick(VegetarianDish)}>Vegetarian</Button>
+      <Button onClick={() => onClick(vegetarianRecipes)}>Vegetarian</Button>
     </>
   );
 };

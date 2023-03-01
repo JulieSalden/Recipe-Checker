@@ -5,38 +5,42 @@ import { RecipeSearch } from "../components/RecipeSearch";
 import { RecipeDetails } from "../components/RecipeDetails";
 
 export const RecipesPage = (onClick) => {
+  // deze gebruik ik om vegan en vega op te filteren
   const recipes = data.hits;
 
-  console.log(recipes);
+  // deze gebruik ik om door te sturen en properties van te gebruiken
+  const recipe = recipes.map((recipe) => {
+    return recipe.recipe;
+  });
 
-  // const recipe = recipes.map((recipe) => {
-  //   return recipe.recipe;
-  // });
-  // console.log(recipe);
-
+  // verzamelen van vegan en vega gerechten
   const veganRecipes = recipes.filter(({ recipe }) =>
     recipe.healthLabels.includes("Vegan")
   );
-  console.log(veganRecipes);
+
+  const vegetarianRecipes = recipes.filter(({ recipe }) =>
+    recipe.healthLabels.includes("Vegetarian")
+  );
 
   const [userChoice, setUserChoice] = useState();
   console.log(userChoice);
+
   return (
     <Center h="100vh" flexDir="column" bg="white">
       <Box className="app">
-        {userChoice && recipes ? (
+        {userChoice && recipe ? (
           <RecipeDetails choice={userChoice} onClick={setUserChoice} />
         ) : (
           <>
-            <RecipeSearch onClick={setUserChoice} recipe={recipes} />
+            <RecipeSearch
+              onClick={setUserChoice}
+              recipe={recipe}
+              veganRecipes={veganRecipes}
+              vegetarianRecipes={vegetarianRecipes}
+            />
           </>
         )}
       </Box>
     </Center>
   );
 };
-
-// setUseChoice is dus recept want onclick=setuserchoice is hetzelfde als onclick=>(recept)
-// dus setuserchoice=recept
-// en choice is userchoice dus choice is nu (gekozen) recept (in recipedetails)
-// dus dan hoef je niet meer recipe mee te geven maar kun je choice.label etc gebruiken
