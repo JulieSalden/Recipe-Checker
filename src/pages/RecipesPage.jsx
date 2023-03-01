@@ -15,7 +15,7 @@ export const RecipesPage = (onClick) => {
   return (
     <Center h="100vh" flexDir="column" bg="red.100">
       <Box className="app">
-        {userChoice ? (
+        {userChoice && recipe ? (
           <RecipeDetails choice={userChoice} onClick={setUserChoice} />
         ) : (
           <>

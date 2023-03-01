@@ -1,17 +1,26 @@
 import { Input } from "@chakra-ui/react";
 import { Recipes } from "./Recipes";
 import { useState } from "react";
+import { data } from "../utils/data";
 
 export const Searchbar = (onChange, recipe) => {
-  console.log(recipe); // <---- UNDEFINED?
+  // console.log(recipe); <----- RECIPE KOMT HIER NIET DOOR MAAR VOOR DE REST WEL OVERAL?
 
   const [searchField, setSearchField] = useState("");
-  //   const matchedRecipes = recipe.filter((recipe) => {
-  //     return recipe.label.toLowerCase().includes(searchField.toLowerCase());
+
+  // const matchedRecipes = recipe
+  //   .map((recipe) => {
+  //     return recipe.label;
+  //   })
+  //   .filter((recipe) => {
+  //     recipe.label.toLowerCase().includes(searchField.toLowerCase());
   //   });
+  // console.log(matchedRecipes);
+
   const handleChange = (event) => {
     setSearchField(event.target.value);
   };
+
   return (
     <>
       <Input

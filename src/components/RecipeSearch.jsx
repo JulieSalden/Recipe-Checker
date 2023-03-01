@@ -6,18 +6,37 @@ import { Searchbar } from "./Searchbar";
 
 export const RecipeSearch = ({ onClick, onChange, recipe }) => {
   console.log(recipe);
-  //   const healthLabels = recipe.healthLabels;
-  //   console.log(healthLabels);
+  // alle recipes waarbij vegan of vega in healthlabels staat, terug geven
+  // healthlabels nodig V en bijbehorende recept dus label.
 
-  //   const VegetarianDish = healthLabels.filter((healthLabel) => {
-  //     healthLabel.includes("Vegetarian");
-  //   });
+  const healthLabels = recipe.map((recipe) => {
+    return recipe.healthLabels;
+  });
+  console.log(healthLabels);
 
-  //   const VeganDish = healthLabels.filter((healthLabel) => {
-  //     healthLabel.includes("Vegan");
-  //   });
+  const veganlabels = healthLabels.map((healthlabel) => {
+    return healthlabel.filter((healthLabel) => {
+      return healthLabel === "Vegan";
+    });
+  });
 
-  // WERKT NIET WANT FILTER IS NOT A FUNCTION..??
+  console.log(veganlabels);
+
+  const vegetarianlabels = healthLabels.map((healthlabel) => {
+    return healthlabel.filter((healthLabel) => {
+      return healthLabel === "Vegetarian";
+    });
+  });
+
+  console.log(vegetarianlabels);
+
+  // for (var i = 0; recipe.length; i++) {
+  //   for (var x = 0; veganlabels.lenght; x++) {
+  //     if (recipe[i] === veganlabels[x]) {
+  //       console.log(recipe[i]);
+  //     }
+  //   }
+  // } <---- DIT IS NIET DE MANIER WANT LOCAL HOST CRASHT HIERDOOR?
 
   return (
     <Box h="calc(100vh)">
@@ -27,8 +46,8 @@ export const RecipeSearch = ({ onClick, onChange, recipe }) => {
         </Heading>
         <Flex gridTemplateRows="repeat(3, 1fr)" gap={2}>
           <Searchbar onchange={onChange} recipe={recipe} />
-          {/* <ButtonVeg onClick={onClick} recipe={VegetarianDish} />
-          <ButtonVegan onClick={onClick} recipe={VeganDish} /> */}
+          {/* <ButtonVeg onClick={onClick} recipe={recipe} />
+          <ButtonVegan onClick={onClick} recipe={recipe} /> */}
         </Flex>
         <Grid templateColumns="repeat(4, 1fr)" gap={6}>
           {recipe.map((recipe) => (
