@@ -4,39 +4,33 @@ import { ButtonVeg } from "./ButtonVeg";
 import { ButtonVegan } from "./ButtonVegan";
 import { Searchbar } from "./Searchbar";
 
-export const RecipeSearch = ({ onClick, onChange, recipe }) => {
-  console.log(recipe);
-  // alle recipes waarbij vegan of vega in healthlabels staat, terug geven
-  // healthlabels nodig V en bijbehorende recept dus label.
+export const RecipeSearch = ({ onClick, onChange, recipes }) => {
+  console.log(recipes);
 
-  const healthLabels = recipe.map((recipe) => {
-    return recipe.healthLabels;
-  });
-  console.log(healthLabels);
+  // const veganLabels = recipe.map(({ recipe }) =>
+  //   recipe.healthLabels.includes("Vegan")
+  // );
+  // console.log(veganLabels);
 
-  const veganlabels = healthLabels.map((healthlabel) => {
-    return healthlabel.filter((healthLabel) => {
-      return healthLabel === "Vegan";
-    });
-  });
+  // niet gebruiken
+  // const healthLabels = recipe.map((recipe) => {
+  //   return recipe.healthLabels;
+  // });
+  // console.log(healthLabels);
 
-  console.log(veganlabels);
+  // const veganlabels = healthLabels.map((healthlabel) => {
+  //   return healthlabel.contains("Vegan");
+  // });
 
-  const vegetarianlabels = healthLabels.map((healthlabel) => {
-    return healthlabel.filter((healthLabel) => {
-      return healthLabel === "Vegetarian";
-    });
-  });
+  // console.log(veganlabels);
 
-  console.log(vegetarianlabels);
+  // const vegetarianlabels = healthLabels.map((healthlabel) => {
+  //   return healthlabel.filter((healthLabel) => {
+  //     return healthLabel === "Vegetarian";
+  //   });
+  // });
 
-  // for (var i = 0; recipe.length; i++) {
-  //   for (var x = 0; veganlabels.lenght; x++) {
-  //     if (recipe[i] === veganlabels[x]) {
-  //       console.log(recipe[i]);
-  //     }
-  //   }
-  // } <---- DIT IS NIET DE MANIER WANT LOCAL HOST CRASHT HIERDOOR?
+  // console.log(vegetarianlabels);
 
   return (
     <Box h="calc(100vh)">
@@ -45,14 +39,14 @@ export const RecipeSearch = ({ onClick, onChange, recipe }) => {
           Recipe checker
         </Heading>
         <Flex gridTemplateRows="repeat(3, 1fr)" gap={2}>
-          <Searchbar onchange={onChange} recipe={recipe} />
+          <Searchbar onchange={onChange} recipe={recipes} />
           {/* <ButtonVeg onClick={onClick} recipe={recipe} />
           <ButtonVegan onClick={onClick} recipe={recipe} /> */}
         </Flex>
         <Grid templateColumns="repeat(4, 1fr)" gap={6}>
-          {recipe.map((recipe) => (
+          {recipes.map((recipe) => (
             <Box key={recipe.label}>
-              <Recipes onClick={onClick} recipe={recipe} />
+              <Recipes onClick={onClick} recipe={recipes} />
             </Box>
           ))}
         </Grid>

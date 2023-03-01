@@ -1,10 +1,10 @@
 import { Center, Image, Text, Box, Flex } from "@chakra-ui/react";
 
-export const Recipes = ({ onClick, recipe }) => {
+export const Recipes = ({ onClick, recipes }) => {
   return (
-    <Center gap={8} cursor={"pointer"} onClick={() => onClick(recipe)}>
+    <Center gap={8} cursor={"pointer"} onClick={() => onClick(recipes)}>
       <Box
-        bgGradient="linear(to-b, green.100, pink.300)"
+        bgGradient="linear(to-b, green.100, pink.200)"
         w="100%"
         p={4}
         color="white"
@@ -12,7 +12,7 @@ export const Recipes = ({ onClick, recipe }) => {
       >
         <Flex direction="column" align="center">
           <Text fontWeight={"450"} color="blue.600">
-            {recipe.label}{" "}
+            {recipes.label}{" "}
           </Text>
           <Image
             src={recipe.image}
@@ -22,13 +22,13 @@ export const Recipes = ({ onClick, recipe }) => {
             alt={recipe.alt}
           />
           <Box>
-            <Text>{recipe.mealType}</Text>
+            <Text>{recipes.mealType}</Text>
           </Box>
           <Box>
-            <Text>{recipe.dishType}</Text>
+            <Text>{recipes.dishType}</Text>
           </Box>
           <Box>
-            <Text>{recipe.dietLabels}</Text>
+            <Text>{recipes.dietLabels}</Text>
           </Box>
           <Box>
             <Text>

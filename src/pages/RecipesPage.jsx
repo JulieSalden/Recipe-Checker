@@ -6,20 +6,29 @@ import { RecipeDetails } from "../components/RecipeDetails";
 
 export const RecipesPage = (onClick) => {
   const recipes = data.hits;
-  const recipe = recipes.map((recipe) => {
-    return recipe.recipe;
-  });
+
+  console.log(recipes);
+
+  // const recipe = recipes.map((recipe) => {
+  //   return recipe.recipe;
+  // });
+  // console.log(recipe);
+
+  const veganRecipes = recipes.filter(({ recipe }) =>
+    recipe.healthLabels.includes("Vegan")
+  );
+  console.log(veganRecipes);
 
   const [userChoice, setUserChoice] = useState();
   console.log(userChoice);
   return (
-    <Center h="100vh" flexDir="column" bg="red.100">
+    <Center h="100vh" flexDir="column" bg="white">
       <Box className="app">
-        {userChoice && recipe ? (
+        {userChoice && recipes ? (
           <RecipeDetails choice={userChoice} onClick={setUserChoice} />
         ) : (
           <>
-            <RecipeSearch onClick={setUserChoice} recipe={recipe} />
+            <RecipeSearch onClick={setUserChoice} recipe={recipes} />
           </>
         )}
       </Box>
