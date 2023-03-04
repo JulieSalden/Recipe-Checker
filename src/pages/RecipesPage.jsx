@@ -1,10 +1,13 @@
-import { Center, Box } from "@chakra-ui/react";
+import { Center, Box, Grid, Flex, Heading } from "@chakra-ui/react";
 import { data } from "../utils/data";
 import { useState } from "react";
 import { RecipeSearch } from "../components/RecipeSearch";
 import { RecipeDetails } from "../components/RecipeDetails";
+import { ButtonVeg } from "../components/ButtonVeg";
+import { ButtonVegan } from "../components/ButtonVegan";
+import { Searchbar } from "../components/Searchbar";
 
-export const RecipesPage = (onClick) => {
+export const RecipesPage = ({ onClick, onChange }) => {
   // deze gebruik ik om vegan en vega op te filteren
   const recipes = data.hits;
 
@@ -23,21 +26,43 @@ export const RecipesPage = (onClick) => {
   );
 
   const [userChoice, setUserChoice] = useState();
-  console.log(userChoice);
+
+  const [unfilteredRecipes, setFilteredRecipes] = useState();
 
   return (
-    <Center h="100vh" flexDir="column" bg="white">
+    <Center flexDir="column" bg="white">
+      <Center
+        width="100%"
+        height={60}
+        mb={20}
+        bgGradient="linear(to-b, pink.200, white)"
+      >
+        <Heading size="2xl" color="blue.700" as="i">
+          Recipe checker
+        </Heading>
+      </Center>
       <Box className="app">
         {userChoice && recipe ? (
-          <RecipeDetails choice={userChoice} onClick={setUserChoice} />
+          <RecipeDetails recipe={userChoice} onClick={setUserChoice} />
         ) : (
           <>
-            <RecipeSearch
-              onClick={setUserChoice}
-              recipe={recipe}
-              veganRecipes={veganRecipes}
-              vegetarianRecipes={vegetarianRecipes}
-            />
+            <Flex direction="column" flexWrap="wrap" align="center">
+              <Flex direction="row" gap={2}>
+                <Searchbar onchange={onChange} recipe={recipe} />
+                <ButtonVeg
+                  recipe={unfilteredRecipes}
+                  onClick={setFilteredRecipes}
+                  vegetarianrecipes={vegetarianRecipes}
+                />
+                <ButtonVegan
+                  recipe={unfilteredRecipes}
+                  onClick={setFilteredRecipes}
+                  veganrecipes={veganRecipes}
+                />
+              </Flex>
+            </Flex>
+
+            <RecipeSearch onClick={setUserChoice} recipe={recipe} />
           </>
         )}
       </Box>

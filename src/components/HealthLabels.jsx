@@ -1,15 +1,14 @@
 import { Text } from "@chakra-ui/react";
+import uuid from "react-uuid";
 
-export const HealthLabels = (choice) => {
-  console.log(choice);
-  //   const ChoiceDietLabels = choice.values(dietLabels);
+export const HealthLabels = ({ recipe }) => {
+  const healthLabels = recipe.healthLabels;
 
-  //   const ChoiceDietLabels = Object.values(dietLabels);
-
-  //   console.log(ChoiceDietLabels);
-
-  //   const DietLabels = choice.dietLabels.map((dietLabel) => {
-  //     return <Text key="choice.label">{dietLabel}</Text>;
-  //   });
-  //   console.log(DietLabels);
+  return healthLabels.map((healthLabel) => {
+    return (
+      <Text color="blue.600" key={uuid()}>
+        {healthLabel}
+      </Text>
+    );
+  });
 };

@@ -15,8 +15,18 @@ import { Ingredients } from "./Ingredients";
 import { HealthLabels } from "./HealthLabels";
 import { Nutrients } from "./Nutrients";
 
-export const RecipeDetails = ({ onClick, choice }) => {
-  console.log(choice);
+export const RecipeDetails = ({ onClick, recipe }) => {
+  console.log(recipe);
+  const cautions = recipe.cautions;
+  console.log(cautions);
+
+  if (cautions.lenght > 0) {
+    cautions.split(",");
+    return cautions;
+  }
+  console.log(cautions);
+
+  // IK WIL GRAAG DE CAUTIONS MET EEN SPATIE ER TUSSEN ??
 
   return (
     <>
@@ -24,81 +34,71 @@ export const RecipeDetails = ({ onClick, choice }) => {
         bgGradient="linear(to-b, green.100, pink.200)"
         w="100%"
         p={4}
-        color="white"
-        pt={40}
+        color="pink.400"
+        pt={20}
         pb={40}
         pl={40}
         pr={40}
         borderRadius="50"
+        borderColor="green.100"
+        borderWidth={8}
       >
         <Box>
           <Heading fontWeight={"450"} color="blue.600" mb={65}>
-            {choice.label}
-          </Heading>{" "}
-          <Grid
-            h="200px"
-            templateRows="repeat(2, 1fr)"
-            templateColumns="repeat(2, 1fr)"
-            gap={4}
-          >
-            <GridItem rowSpan={2} colSpan={1}>
-              <Box>
-                <Text>{choice.mealType}</Text>
-              </Box>
-              <Box>
-                <Text>{choice.dishType}</Text>
-              </Box>
+            {recipe.label}
+          </Heading>
+          <Grid>
+            <GridItem>
+              <Box>{recipe.mealType}</Box>
+              <Box>{recipe.dishType}</Box>
             </GridItem>
-            <GridItem rowSpan={2} colSpan={1} colStart={2}>
+            <GridItem>
               <Image
-                src={choice.image}
+                src={recipe.image}
                 width={250}
                 height={250}
-                alt={choice.alt}
+                alt={recipe.alt}
                 borderRadius="50%"
               />
             </GridItem>
           </Grid>
           <Box>
-            <Text>
-              <Ingredients choice={choice} />
-            </Text>
+            Ingredients:
+            <Ingredients recipe={recipe} />
           </Box>
           <Box>
-            <Text>Cooking time: {choice.totalTime} minutes</Text>
+            Cooking time:
+            <Text color="blue.600">{recipe.totalTime} minutes</Text>
           </Box>
           <Box>
-            <Text>Servings: {choice.yield}</Text>
+            Servings: <Text color="blue.600">{recipe.yield}</Text>
           </Box>
           <Box>
-            <Text>
-              Dietlabels:
-              <DietLabels choice={choice} />
-            </Text>
+            Dietlabels: <DietLabels recipe={recipe} />
           </Box>
           <Box>
-            <Text>
-              Healthlabels: <HealthLabels choice={choice} />
-            </Text>
+            Healthlabels: <HealthLabels recipe={recipe} />
           </Box>
           <Box>
-            <Text>
-              <Nutrients choice={choice} />
-            </Text>
+            <Nutrients recipe={recipe} />
           </Box>
           <Box>
-            <Text>Cautions: {choice.cautions}</Text>
-          </Box>{" "}
-          <Button
-            onClick={() => {
-              onClick();
-            }}
-            bg="blue.600"
-            mt={65}
-          >
-            Go back
-          </Button>
-        </Box>
+            Cautions: <Text color="blue.600"> {cautions}</Text>
+          </Box>
+        </Box>{" "}
+      </Center>
+      <Center>
+        <Button
+          onClick={() => {
+            onClick();
+          }}
+          bg="blue.600"
+          color="white"
+          mt={65}
+          mb={65}
+        >
+          Go back
+        </Button>
       </Center>
     </>
   );

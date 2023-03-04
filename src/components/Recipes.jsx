@@ -1,14 +1,30 @@
 import { Center, Image, Text, Box, Flex } from "@chakra-ui/react";
 
-export const Recipes = ({ onClick, recipe }) => {
+export const Recipes = ({ onClick, recipe, veganDish, vegetarianDish }) => {
+  const dietLabelString = recipe.dietLabels;
+  console.log(dietLabelString);
+
+  if (dietLabelString.lenght > 0) {
+    dietLabelString.join("");
+    return dietLabelString;
+  }
+  console.log(dietLabelString);
+
+  // IK WIL GRAAG DIETLABELS MET EEN SPATIE ER TUSSEN ??
+
+  // HOE KRIJG IK VEGAN OF VEGA GEDISPLAYED?
+
   return (
     <Center gap={8} cursor={"pointer"} onClick={() => onClick(recipe)}>
       <Box
         bgGradient="linear(to-b, green.100, pink.200)"
         w="100%"
+        h={450}
         p={4}
         color="white"
         borderRadius={50}
+        borderColor="green.100"
+        borderWidth={8}
       >
         <Flex direction="column" align="center">
           <Text fontWeight={"450"} color="blue.600">
@@ -20,21 +36,21 @@ export const Recipes = ({ onClick, recipe }) => {
             height={220}
             borderRadius="50%"
             alt={recipe.alt}
+            mt={15}
+            mb={25}
           />
           <Box>
-            <Text>{recipe.mealType}</Text>
+            <Text color="pink.400">{recipe.mealType}</Text>
           </Box>
           <Box>
             <Text>{recipe.dishType}</Text>
           </Box>
           <Box>
-            <Text>{recipe.dietLabels}</Text>
+            <Text>{dietLabelString}</Text>
           </Box>
           <Box>
-            <Text>
-              {/* {veganDish}
-              {vegetarianDish} */}
-            </Text>
+            {veganDish}
+            {vegetarianDish}
           </Box>
         </Flex>
       </Box>

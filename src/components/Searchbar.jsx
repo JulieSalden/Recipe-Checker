@@ -3,23 +3,25 @@ import { Recipes } from "./Recipes";
 import { useState } from "react";
 import { data } from "../utils/data";
 
-export const Searchbar = (onChange, recipe) => {
-  // console.log(recipe); <----- RECIPE KOMT HIER NIET DOOR MAAR VOOR DE REST WEL OVERAL?
+export const Searchbar = ({ onChange, recipe }) => {
+  console.log(recipe);
 
   const [searchField, setSearchField] = useState("");
 
-  // const matchedRecipes = recipe
-  //   .map((recipe) => {
-  //     return recipe.label;
-  //   })
-  //   .filter((recipe) => {
-  //     recipe.label.toLowerCase().includes(searchField.toLowerCase());
-  //   });
-  // console.log(matchedRecipes);
+  const recipeLabels = recipe.map((recipe) => {
+    return recipe.label;
+  });
+
+  const matchedRecipes = recipeLabels.filter((recipeLabel) => {
+    recipeLabel.toLowerCase().includes(searchField.toLowerCase());
+  });
+  console.log(matchedRecipes);
 
   const handleChange = (event) => {
     setSearchField(event.target.value);
   };
+
+  //---- DIT WERKT NIET WANT matchedRecipes IS UNDEFINED??
 
   return (
     <>
