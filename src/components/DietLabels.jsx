@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/react";
+import { Text, Highlight } from "@chakra-ui/react";
 import uuid from "react-uuid";
 
 export const DietLabels = ({ recipe }) => {
@@ -7,7 +7,12 @@ export const DietLabels = ({ recipe }) => {
   return dietLabels.map((dietLabel) => {
     return (
       <Text color="blue.600" key={uuid()}>
-        {dietLabel}
+        <Highlight
+          query={dietLabel}
+          styles={{ px: "1", py: "1", bg: "green.200" }}
+        >
+          {dietLabel}
+        </Highlight>
       </Text>
     );
   });

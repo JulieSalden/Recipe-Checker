@@ -1,17 +1,7 @@
 import { Center, Image, Text, Box, Flex } from "@chakra-ui/react";
+import { DietLabels } from "./dietLabels";
 
 export const Recipes = ({ onClick, recipe, veganDish, vegetarianDish }) => {
-  const dietLabelString = recipe.dietLabels;
-  console.log(dietLabelString);
-
-  if (dietLabelString.lenght > 0) {
-    dietLabelString.join("");
-    return dietLabelString;
-  }
-  console.log(dietLabelString);
-
-  // IK WIL GRAAG DIETLABELS MET EEN SPATIE ER TUSSEN ??
-
   // HOE KRIJG IK VEGAN OF VEGA GEDISPLAYED?
 
   return (
@@ -46,7 +36,7 @@ export const Recipes = ({ onClick, recipe, veganDish, vegetarianDish }) => {
             <Text>{recipe.dishType}</Text>
           </Box>
           <Box>
-            <Text>{dietLabelString}</Text>
+            <DietLabels recipe={recipe} />
           </Box>
           <Box>
             {veganDish}

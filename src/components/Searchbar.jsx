@@ -5,6 +5,7 @@ import { data } from "../utils/data";
 
 export const Searchbar = ({ onChange, recipe }) => {
   console.log(recipe);
+  // recipe wordt hier niet goed doorgestuurd en onChange niet herkent?
 
   const [searchField, setSearchField] = useState("");
 
@@ -34,7 +35,6 @@ export const Searchbar = ({ onChange, recipe }) => {
         mb={20}
         bg="white"
       ></Input>
-      {/* <Recipes recipe={matchedRecipes} /> */}
     </>
   );
 };

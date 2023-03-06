@@ -7,7 +7,7 @@ export const Ingredients = ({ recipe }) => {
   return ingredients.map((ingredient) => {
     return (
       <Text color="blue.600" key={uuid()}>
-        {ingredient}
+        <Text as="i">{ingredient}</Text>
       </Text>
     );
   });

@@ -1,18 +1,11 @@
 import { Button } from "@chakra-ui/react";
-export const ButtonVeg = ({ onClick, vegetarianRecipes }) => {
-  const filterVegetarianRecipes = (vegetarianRecipes) => {
-    setFilteredRecipes(vegetarianRecipes);
-  };
-
-  // WAT MOET IK HIER DOEN OM DE RECIPES OP HET SCHERM TE KRIJGEN?
-
+export const ButtonVeg = ({ onClick }) => {
   return (
     <>
       <Button
         onClick={() => {
-          () => onClick(filterVegetarianRecipes);
+          () => onClick(onClick);
         }}
-        vegetarianrecipes={vegetarianRecipes}
       >
         Vegetarian
       </Button>

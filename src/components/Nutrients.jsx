@@ -5,10 +5,31 @@ export const Nutrients = ({ recipe }) => {
   const nutrients = recipe.totalNutrients;
   console.log(nutrients);
 
-  //   return nutrients.map((nutrient) => {
-  //     return <Text color="blue.600" key={uuid()}>{nutrient}</Text>;
+  const nutrientsArray = Object.keys(nutrients).map((key) => {
+    return nutrients[key];
+  });
+  console.log(nutrientsArray);
+
+  const energy = nutrientsArray.filter((nutrient) => {
+    return nutrient.label === "Energy";
+  });
+  console.log(energy);
+
+  const carbs = nutrientsArray.filter((nutrient) => {
+    return nutrient.label === "Carbs";
+  });
+  console.log(carbs);
+
+  console.log(energy.label);
+
+  /// en nuuuuu????
+
+  //   const nutrientDisplayArray = [{ energy, carbs }];
+  //   console.log(nutrientDisplayArray);
+
+  //   const nutrientDisplay = nutrientDisplayArray.map((nutrient) => {
+  //     return nutrient.label & nutrient.quantity;
   //   });
 
-  const energy = nutrients[1];
-  console.log(energy);
+  //   console.log(nutrientDisplay);
 };

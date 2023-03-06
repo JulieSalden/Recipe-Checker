@@ -1,24 +1,15 @@
 import { Button } from "@chakra-ui/react";
-import { useState } from "react";
-import { Recipes } from "./Recipes";
 
-export const ButtonVegan = ({ onClick, veganRecipes }) => {
-  // const [userChoice, setUserChoice] = useState();
-  const filterVeganRecipes = (veganRecipes) => {
-    setFilteredRecipes(veganRecipes);
-  };
-
+export const ButtonVegan = ({ onClick }) => {
   return (
     <>
       <Button
         onClick={() => {
-          () => onClick(filterVeganRecipes);
+          () => onClick(onClick);
         }}
-        veganrecipes={veganRecipes}
       >
         Vegan
       </Button>
-      {/* <Recipes recipe={veganRecipes} /> */}
     </>
   );
 };
