@@ -1,35 +1,53 @@
 import { Text } from "@chakra-ui/react";
-import uuid from "react-uuid";
 
-export const Nutrients = ({ recipe }) => {
-  const nutrients = recipe.totalNutrients;
-  console.log(nutrients);
+export const Nutrients = ({ recipe }) =>
+  // omzetten naar array van nutrients zodat de benodigde
+  // properties bereikt kunnen worden dmv filter
+  {
+    const nutrients = recipe.totalNutrients;
 
-  const nutrientsArray = Object.keys(nutrients).map((key) => {
-    return nutrients[key];
-  });
-  console.log(nutrientsArray);
+    const nutrientsArray = Object.keys(nutrients).map((key) => {
+      return nutrients[key];
+    });
 
-  const energy = nutrientsArray.filter((nutrient) => {
-    return nutrient.label === "Energy";
-  });
-  console.log(energy);
+    const energy = nutrientsArray.filter((nutrient) => {
+      return nutrient.label === "Energy";
+    });
 
-  const carbs = nutrientsArray.filter((nutrient) => {
-    return nutrient.label === "Carbs";
-  });
-  console.log(carbs);
+    const carbs = nutrientsArray.filter((nutrient) => {
+      return nutrient.label === "Carbs";
+    });
 
-  console.log(energy.label);
+    const protein = nutrientsArray.filter((nutrient) => {
+      return nutrient.label === "Protein";
+    });
 
-  /// en nuuuuu????
+    const fat = nutrientsArray.filter((nutrient) => {
+      return nutrient.label === "Fat";
+    });
 
-  //   const nutrientDisplayArray = [{ energy, carbs }];
-  //   console.log(nutrientDisplayArray);
+    const cholesterol = nutrientsArray.filter((nutrient) => {
+      return nutrient.label === "Cholesterol";
+    });
 
-  //   const nutrientDisplay = nutrientDisplayArray.map((nutrient) => {
-  //     return nutrient.label & nutrient.quantity;
-  //   });
+    const sodium = nutrientsArray.filter((nutrient) => {
+      return nutrient.label === "Sodium";
+    });
 
-  //   console.log(nutrientDisplay);
-};
+    return (
+      <>
+        <Text as="b">{energy[0].label}:</Text>
+        <Text as="i"> {Math.round(energy[0].quantity)} kcal</Text>
+        <Text as="b">{carbs[0].label}: </Text>
+        <Text as="i"> {Math.round(carbs[0].quantity)} grams</Text>
+        <Text as="b">{protein[0].label}: </Text>
+        <Text as="i"> {Math.round(protein[0].quantity)} grams</Text>
+        <Text as="b">{fat[0].label}: </Text>
+        <Text as="i"> {Math.round(fat[0].quantity)} grams</Text>
+        <Text as="b">{cholesterol[0].label}: </Text>
+        <Text as="i"> {Math.round(cholesterol[0].quantity)} grams</Text>
+        <Text as="b">{sodium[0].label}: </Text>
+        <Text as="i"> {Math.round(sodium[0].quantity)} grams</Text>
+      </>
+    );
+  };

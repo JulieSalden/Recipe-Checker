@@ -1,14 +1,4 @@
-import {
-  Center,
-  Heading,
-  Box,
-  Image,
-  Text,
-  Flex,
-  Grid,
-  GridItem,
-} from "@chakra-ui/react";
-import { useState } from "react";
+import { Center, Box, Image, Text, Flex } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import { DietLabels } from "./dietLabels";
 import { Ingredients } from "./Ingredients";
@@ -17,6 +7,7 @@ import { Nutrients } from "./Nutrients";
 import { Cautions } from "./Cautions";
 
 export const RecipeDetails = ({ onClick, recipe }) => {
+  // alles wat er in het gedetailleerde blok van 1 recept komt
   return (
     <>
       <Center
@@ -29,15 +20,21 @@ export const RecipeDetails = ({ onClick, recipe }) => {
         pr={40}
         ml={40}
         mr={40}
+        w={{ base: "80px", md: "200px", lg: "1000px" }}
         borderRadius="50"
         borderColor="green.100"
         borderWidth={8}
       >
         <Box>
           <Center>
-            <Heading fontWeight={"450"} color="blue.600" mb={75}>
+            <Text
+              fontSize={{ base: "20px", md: "35px", lg: "35px" }}
+              fontWeight={"450"}
+              color="blue.600"
+              mb={75}
+            >
               {recipe.label}
-            </Heading>
+            </Text>
           </Center>
           <Flex direction="column" alignItems="center">
             <Box
@@ -55,18 +52,22 @@ export const RecipeDetails = ({ onClick, recipe }) => {
                   </Box>
                   <Box mb={2}>{recipe.dishType}</Box>
                 </Flex>
-              </Box>{" "}
+              </Box>
             </Box>
 
             <Image
               src={recipe.image}
-              width={300}
-              height={300}
+              width={{ base: "200px", md: "250x", lg: "350px" }}
+              height={{ base: "200px", md: "250px", lg: "350px" }}
               alt={recipe.alt}
               borderRadius="50%"
             />
           </Flex>
-          <Flex direction="row" gap={20} mt={20}>
+          <Flex
+            direction={{ base: "column", md: "column", lg: "row" }}
+            gap={20}
+            mt={20}
+          >
             <Box>
               Ingredients:
               <Ingredients recipe={recipe} />
@@ -83,25 +84,25 @@ export const RecipeDetails = ({ onClick, recipe }) => {
             </Flex>
           </Flex>
           <Box mt={5}>
-            Dietlabels:{" "}
+            Dietlabels:
             <Flex direction="row" flexWrap="wrap" gap={2}>
               <DietLabels recipe={recipe} />
             </Flex>
           </Box>
           <Box mt={5}>
-            Healthlabels:{" "}
+            Healthlabels:
             <Flex direction="row" flexWrap="wrap" gap={2}>
               <HealthLabels recipe={recipe} />
-            </Flex>{" "}
+            </Flex>
           </Box>
           <Box mt={5}>
-            Nutrients:{" "}
+            Nutrients:
             <Flex direction="row" flexWrap="wrap" gap={2}>
               <Nutrients recipe={recipe} />
             </Flex>
           </Box>
           <Box mt={5}>
-            Cautions:{" "}
+            Cautions:
             <Flex direction="row" flexWrap="wrap" gap={2}>
               <Cautions recipe={recipe} />
             </Flex>
