@@ -48,7 +48,7 @@ export const RecipesPage = ({}) => {
         bgGradient="linear(to-b, pink.200, white)"
       >
         <Heading size="2xl" color="blue.700" as="i">
-          Recipe checker
+          Recipe Checker
         </Heading>
       </Center>
       <Box className="app">
